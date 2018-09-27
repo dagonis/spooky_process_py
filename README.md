@@ -8,7 +8,7 @@ Tested and working on Python 3.5+
 # Usage
 Test and working as root, might work as a regular user but that is untested.
 
-`# python3 spookyprocess.py  
+prompt# python3 spookyprocess.py  
 We have found the follow suspicious PIDs:  
 9577  
-8138`  
+8138   
