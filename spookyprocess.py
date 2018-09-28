@@ -134,6 +134,15 @@ if __name__ == '__main__':
         except Exception as e:
             print("pid: {} Unhandled exception {}".format(pid_to_check, e))
     if len(possible_hidden_pids) > 0:
-        print("We have found the follow suspicious PIDs:\n{}".format("\n".join([str(pid) for pid in possible_hidden_pids])))
+        pid_procs = {}
+        for possible_hidden_pid in possible_hidden_pids:
+            try:
+                potential_process = os.path.realpath('/proc/{}/exe'.format(possible_hidden_pid))
+            except:
+                potential_process = "Unknown"
+            pid_procs[possible_hidden_pid] = potential_process
+        print("We have found the follow suspicious PIDs:")
+        for k, v in pid_procs.items():
+            print("{} (It might be {})".format(k, v))
     else:
         print("We did not find any suspicious PIDs")
